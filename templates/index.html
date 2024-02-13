@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Loss Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/data_report">Data Report</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Hair Loss Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <label for="Age">Age:</label>
+            <input type="number" id="age" name="Age" required>
+            <label for="Genetics">Genetics:</label>
+            <select id="Genetics" name="Genetics" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label for="Hormonal_Changes">Hormonal Changes:</label>
+            <select id="hormonal_changes" name="Hormonal_Changes" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label for="Medical_Conditions">Medical Conditions:</label>
+            <select id="medical_conditions" name="Medical_Conditions" required>
+                <option value="No Data">No Data</option>
+                <option value="Eczema">Eczema</option>
+                <option value="Dermatosis">Dermatosis</option>
+                <option value="Ringworm">Ringworm</option>
+                <option value="Psoriasis">Psoriasis</option>
+                <option value="Alopecia Areata ">Alopecia Areata </option>
+                <option value="Scalp Infection">Scalp Infection</option>
+                <option value="Seborrheic Dermatitis">Seborrheic Dermatitis</option>
+                <option value="Dermatitis">Dermatitis</option>
+                <option value="Thyroid Problems">Thyroid Problems</option>
+                <option value="Androgenetic Alopecia">Androgenetic Alopecia</option>
+            </select>
+            <label for="Medications_&_Treatments">Medications & Treatments:</label>
+            <select id="medications" name="Medications_&_Treatments" required>
+                <option value="No Data">No Data</option>
+                <option value="Antibiotics">Antibiotics</option>
+                <option value="Antifungal Cream">Antifungal Cream</option>
+                <option value="Accutane">Accutane</option>
+                <option value="Chemotherapy">Chemotherapy</option>
+                <option value="Steroids">Steroids</option>
+                <option value="Rogaine">Rogaine</option>
+                <option value="Blood Pressure Medication">Blood Pressure Medication</option>
+                <option value="Immunomodulators">Immunomodulators</option>
+                <option value="Antidepressants ">Antidepressants </option>
+                <option value="Heart Medication ">Heart Medication </option>
+            </select>
+            <label for="Nutritional_Deficiencies">Nutritional Deficiencies:</label>
+            <select id="nutritional_deficiencies" name="Nutritional_Deficiencies" required>
+                <option value="Magnesium deficiency">Magnesium deficiency</option>
+                <option value="Protein deficiency">Protein deficiency</option>
+                <option value="Biotin Deficiency ">Biotin Deficiency </option>
+                <option value="Iron deficiency">Iron deficiency</option>
+                <option value="Selenium deficiency">Selenium deficiency</option>
+                <option value="Omega-3 fatty acids">Omega-3 fatty acids</option>
+                <option value="Zinc Deficiency">Zinc Deficiency</option>
+                <option value="Vitamin A Deficiency">Vitamin A Deficiency</option>
+                <option value="Vitamin D Deficiency">Vitamin D Deficiency</option>
+                <option value="Vitamin E deficiency">Vitamin E deficiency</option>
+                <option value="No Data">No Data</option>
+            </select>
+            <label for="Stress">Stress:</label>
+            <select id="stress" name="Stress" required>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+            </select>
+            <label for="Poor_Hair_Care_Habits">Poor Hair Care Habits:</label>
+            <select id="poor_hair_care" name="Poor_Hair_Care_Habits" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label for="Environmental_Factors">Environmental Factors:</label>
+            <select id="environmental_factors" name="Environmental_Factors" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label for="Smoking">Smoking:</label>
+            <select id="smoking" name="Smoking" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            <label for="Weight_Loss">Weight Loss:</label>
+            <select id="weight_loss" name="Weight_Loss" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            <button type="submit">Predict</button>
+        </form>
+        <p class="note">Note: The predictions may not always be accurate due to limited training data.</p>
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction:</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
